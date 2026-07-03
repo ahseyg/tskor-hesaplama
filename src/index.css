@@ -208,16 +208,21 @@ input[type="number"] {
 }
 
 .num-input, .text-input, .sys-select {
-  background: transparent;
+  width: 100%;
+  padding: 0.3rem;
+  background: var(--bg-card);
   border: 1px solid var(--border-color);
   color: var(--text-primary);
   border-radius: 4px;
-  padding: 0.4rem;
-  font-size: 0.85rem;
-  width: 100%;
-  text-align: center;
-  outline: none;
-  transition: border-color 0.2s;
+}
+
+.input-error {
+  border-color: #ff4d4f !important;
+  color: #ff4d4f !important;
+}
+
+.input-error:focus {
+  box-shadow: 0 0 0 2px rgba(255, 77, 79, 0.2) !important;
 }
 
 .text-input {
@@ -386,4 +391,126 @@ button {
   color: var(--text-secondary);
   opacity: 0.5;
   font-weight: normal;
+}
+
+/* 📱 MOBILE RESPONSIVENESS */
+@media (max-width: 768px) {
+  .page-header {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .global-stats-container {
+    width: 100%;
+    align-items: stretch;
+  }
+  
+  .header-actions-row {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .io-actions {
+    width: 100%;
+  }
+
+  .io-actions button {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .prev-stats {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .prev-stats div {
+    justify-content: space-between;
+  }
+  
+  .global-stats {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .global-stats .stat {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .table-actions {
+    justify-content: stretch;
+  }
+  .add-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Transform table into stacked cards */
+  .table-container {
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    max-height: none;
+    overflow: visible;
+  }
+
+  .grades-table, 
+  .grades-table tbody, 
+  .grades-table tr, 
+  .grades-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .grades-table thead {
+    display: none; /* Hide headers */
+  }
+
+  .grades-table tr {
+    margin-bottom: 1.5rem;
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  }
+
+  .grades-table td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: none;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .grades-table td:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-top: 0.5rem;
+    justify-content: flex-end;
+  }
+
+  .grades-table td::before {
+    content: attr(data-label);
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-right: 1rem;
+    flex-shrink: 0;
+  }
+
+  .text-input, .num-input, .sys-select {
+    width: 60%;
+    text-align: right;
+  }
+
+  .num-input {
+    min-width: 0;
+  }
+
+  .result-text {
+    width: auto;
+    text-align: right;
+  }
 }
